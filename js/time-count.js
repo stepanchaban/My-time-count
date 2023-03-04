@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
   //Передаю значение
   const newDeveloper = new Date('Jun 8 2023');
   //Обращаюсь к каскаду
@@ -33,14 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
     minutesVal.textContent = minutes;
     secondsVal.textContent = seconds;
 
-    days.textContent = declOfNum(days, ['день', 'дня', 'дней']);
-    days.textContent = declOfNum(hours, ['час', 'часа', 'часов']);
-    days.textContent = declOfNum(minutes, ['минута', 'минуты', 'минут']);
-    days.textContent = declOfNum(seconds, ['секунда', 'секунды', 'секунд']);
+    daysText.textContent = declOfNum(days, ['День', 'Дня', 'Дней']);
+    hoursText.textContent = declOfNum(hours, ['Час', 'Часа', 'Часов']);
+    minutesText.textContent = declOfNum(minutes, ['Минута', 'Минуты', 'Минут']);
+    secondsText.textContent = declOfNum(seconds, ['Секунда', 'Секунды', 'Секунд']);
   };
   //Вызов функции
   timeCount();
 
   setInterval(timeCount, 1000);
-});
+// });
 
