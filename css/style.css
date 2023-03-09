@@ -4,20 +4,32 @@
   box-sizing: border-box;
 }
 
+:root {
+  --main-white: #fff;
+  --main-black: black;
+  --main-color: #fff;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  background-color: #fafafa;
+  overflow: hidden;
+  background-color: var(--main-white);
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  overflow: hidden;
+  color: var(--main-color);
+}
+
+body.dark {
+  --main-white: rgb(62, 59, 59);
+  --main-black: rgb(221, 218, 218);
+  --main-color: rgb(0, 0, 0);
 }
 
 .time-count {
-  background-color: black;
+  background-color: var(--main-black);
   box-shadow: 4px 8px 40px rgba (8, 24, 111, 0.2);
   border-radius: 30px;
   width: 800px;
@@ -74,4 +86,24 @@ body {
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
+}
+
+#toggle-theme-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 3;
+  transition: 0.3s;
+}
+
+#toggle-theme-btn:hover {
+  --main-white: rgb(62, 59, 59);
+}
+
+#toggle-theme-btn img {
+  width: 32px;
 }

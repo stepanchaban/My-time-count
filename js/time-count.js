@@ -74,3 +74,15 @@ timeCount();
 setInterval(timeCount, 1000);
 // });
 
+const toggleThemeBtn = document.getElementById('toggle-theme-btn');
+const toggleThemeImage = document.getElementById('toggle-theme-image');
+
+toggleThemeBtn.addEventListener('click', () => {
+  if (document.body.classList.contains('dark')) {
+    document.body.classList.remove('dark');
+    toggleThemeImage.src = 'img/moon.png'
+  } else {
+    document.body.classList.add('dark');
+    toggleThemeImage.src = 'img/sun.png'
+  }
+});
