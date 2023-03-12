@@ -20,11 +20,12 @@ body {
   align-items: center;
   justify-content: center;
   color: var(--main-color);
+  transition: background-color 0.3s linear, color 0.3s linear;
 }
 
 body.dark {
   --main-white: rgb(62, 59, 59);
-  --main-black: rgb(221, 218, 218);
+  --main-black: rgb(255, 255, 255);
   --main-color: rgb(0, 0, 0);
 }
 
@@ -101,7 +102,8 @@ body.dark {
 }
 
 #toggle-theme-btn:hover {
-  --main-white: rgb(62, 59, 59);
+
+  border-radius: 2px;
 }
 
 #toggle-theme-btn img {
