@@ -18,31 +18,38 @@
   <button id="toggle-theme-btn">
     <img id="toggle-theme-image" src="img/moon.png" alt="theme">
   </button>
+  <div class="my-timer">
+    <form id="my-form" class="my-timer__form">
+      <label for="my-input"></label>
+      <input type="Date" name="data" id="my-input">
+      <button type="submit" class="my-timer__btn">Устоновить дату</button>
+    </form>
+  </div>
   <div class="wrapper">
     <h1 class="visually-hidden">Таймер обратного отсчета</h1>
     <div class="time-count">
-      <h2 class="time-count__title">Стать разработчиком</h2>
-      <div class="time-count__content">
-        <div class="time-count__item time-count__days">
-          <div class="time-count__val">00</div>
-          <span class="time-count__text">Дней</span>
+        <h2 class="time-count__title">Стать разработчиком</h2>
+        <div class="time-count__content">
+          <div class="time-count__item time-count__days">
+            <div class="time-count__val">00</div>
+            <span class="time-count__text">Дней</span>
+          </div>
+          <div class="time-count__dots">:</div>
+          <div class="time-count__item time-count__hours">
+            <div class="time-count__val">00</div>
+            <span class="time-count__text">Часов</span>
+          </div>
+          <div class="time-count__dots">:</div>
+          <div class="time-count__item time-count__minutes">
+            <div class="time-count__val">00</div>
+            <span class="time-count__text">Минут</span>
+          </div>
+          <div class="time-count__dots">:</div>
+          <div class="time-count__item time-count__seconds">
+            <div class="time-count__val">00</div>
+            <span class="time-count__text">Секунд</span>
+          </div>
         </div>
-        <div class="time-count__dots">:</div>
-        <div class="time-count__item time-count__hours">
-          <div class="time-count__val">00</div>
-          <span class="time-count__text">Часов</span>
-        </div>
-        <div class="time-count__dots">:</div>
-        <div class="time-count__item time-count__minutes">
-          <div class="time-count__val">00</div>
-          <span class="time-count__text">Минут</span>
-        </div>
-        <div class="time-count__dots">:</div>
-        <div class="time-count__item time-count__seconds">
-          <div class="time-count__val">00</div>
-          <span class="time-count__text">Секунд</span>
-        </div>
-      </div>
     </div>
   </div>
 </body>

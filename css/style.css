@@ -15,12 +15,15 @@ body {
   font-weight: 400;
   overflow: hidden;
   background-color: var(--main-white);
-  min-height: 100vh;
+  color: var(--main-color);
+  transition: background-color 0.3s linear, color 0.3s linear;
+}
+
+.wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--main-color);
-  transition: background-color 0.3s linear, color 0.3s linear;
+  min-height: 100vh;
 }
 
 body.dark {
@@ -108,4 +111,35 @@ body.dark {
 
 #toggle-theme-btn img {
   width: 32px;
+}
+
+.my-timer {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.my-timer__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-timer__input {
+  background-color: transparent;
+  color: var(--main-black);
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+  border: none;
+  font-size: 14px;
+}
+
+.my-timer__btn {
+  border-radius: 4px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: var(--main-black);
+  color: var(--main-color);
+  outline: none;
+  border: none;
+  font-size: 14px;
 }

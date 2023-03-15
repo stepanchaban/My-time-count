@@ -19,10 +19,9 @@ const minutesWords = {
 const secondWords = {
   one: 'Секунда',
   few: 'Секунды',
-  many: 'Секунд' 
+  many: 'Секунд'
 }
 
-// document.addEventListener('DOMContentLoaded', () => {
 //Передаю значение
 
 const newDeveloper = new Date('Jun 8 2023');
@@ -37,22 +36,27 @@ const hoursText = document.querySelector('.time-count__hours .time-count__text')
 const minutesText = document.querySelector('.time-count__minutes .time-count__text');
 const secondsText = document.querySelector('.time-count__seconds .time-count__text');
 
-/* function declOfNum(number, titles) {
-  let cases = [2, 0, 1, 1, 1, 2];
-  return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
-} */
+
 
 function declOfNum2(number, words) {
   let result = new Intl.PluralRules("ru-RU").select(number);
   return words[result];
 }
 
+let time;
+
 //Ищу текущее значение
 const timeCount = () => {
   let now = new Date();
-  //Осталось до
-  let leftUntil = newDeveloper - now; //Получаю значение в миллисекундах
+  let isNewDate = time ? new Date(time) : null;
 
+  console.log(isNewDate, newDeveloper);
+
+  let trueDay = isNewDate || newDeveloper;
+  //Осталось до
+  let leftUntil = trueDay - now;
+
+  //Получаю значение в миллисекундах
   let days = Math.floor(leftUntil / 1000 / 60 / 60 / 24);
   let hours = Math.floor(leftUntil / 1000 / 60 / 60) % 24;
   let minutes = Math.floor(leftUntil / 1000 / 60) % 60;
@@ -71,8 +75,20 @@ const timeCount = () => {
 //Вызов функции
 timeCount();
 
+
+
 setInterval(timeCount, 1000);
-// });
+
+const formEl = document.getElementById('my-form');
+formEl.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const myNumberInput = formEl.elements['my-input'];
+  time = myNumberInput.value.replace('-', '.');
+  console.log(myNumberInput.value);
+}); 
+
+
 
 const toggleThemeBtn = document.getElementById('toggle-theme-btn');
 const toggleThemeImage = document.getElementById('toggle-theme-image');
