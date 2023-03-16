@@ -143,3 +143,10 @@ body.dark {
   border: none;
   font-size: 14px;
 }
+
+.expired {
+  font-size: 40px;
+  color: red;
+  margin: 0 auto;
+  text-align: center;
+}

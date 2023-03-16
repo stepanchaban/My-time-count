@@ -36,6 +36,7 @@ const hoursText = document.querySelector('.time-count__hours .time-count__text')
 const minutesText = document.querySelector('.time-count__minutes .time-count__text');
 const secondsText = document.querySelector('.time-count__seconds .time-count__text');
 
+const countdownElement = document.querySelector('.time-count__content');
 
 
 function declOfNum2(number, words) {
@@ -71,13 +72,16 @@ const timeCount = () => {
   hoursText.textContent = declOfNum2(hours, hoursWords);
   minutesText.textContent = declOfNum2(minutes, minutesWords);
   secondsText.textContent = declOfNum2(seconds, secondWords);
+
+  if (leftUntil < 0) {
+    clearInterval(countdown);
+    countdownElement.innerHTML = '<h2 class="expired">Время вышло</h2>';
+  }
 };
 //Вызов функции
 timeCount();
 
-
-
-setInterval(timeCount, 1000);
+let countdown = setInterval(timeCount, 1000);
 
 const formEl = document.getElementById('my-form');
 formEl.addEventListener('submit', (event) => {
@@ -85,7 +89,6 @@ formEl.addEventListener('submit', (event) => {
 
   const myNumberInput = formEl.elements['my-input'];
   time = myNumberInput.value.replace('-', '.');
-  console.log(myNumberInput.value);
 }); 
 
 
