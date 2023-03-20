@@ -46,13 +46,13 @@ function declOfNum2(number, words) {
 
 let time;
 
+
 //Ищу текущее значение
-const timeCount = () => {
+const timeCount = (newData) => {
+
+  let dates = new Date(newData);
   let now = new Date();
   let isNewDate = time ? new Date(time) : null;
-
-  console.log(isNewDate, newDeveloper);
-
   let trueDay = isNewDate || newDeveloper;
   //Осталось до
   let leftUntil = trueDay - now;
@@ -79,7 +79,7 @@ const timeCount = () => {
   }
 };
 //Вызов функции
-timeCount();
+timeCount('Jan 24 2024');
 
 let countdown = setInterval(timeCount, 1000);
 
