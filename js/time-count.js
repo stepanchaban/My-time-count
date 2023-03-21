@@ -22,10 +22,6 @@ const secondWords = {
   many: 'Секунд'
 }
 
-//Передаю значение
-
-const newDeveloper = new Date('Jun 8 2023');
-//Обращаюсь к каскаду
 const daysVal = document.querySelector('.time-count__days .time-count__val');
 const hoursVal = document.querySelector('.time-count__hours .time-count__val');
 const minutesVal = document.querySelector('.time-count__minutes .time-count__val');
@@ -38,26 +34,23 @@ const secondsText = document.querySelector('.time-count__seconds .time-count__te
 
 const countdownElement = document.querySelector('.time-count__content');
 
-
-function declOfNum2(number, words) {
+function declOfNum(number, words) {
   let result = new Intl.PluralRules("ru-RU").select(number);
   return words[result];
 }
 
-let time;
+let time = null;
+let interval = null;
 
+//todo: support new interval submission after after last interval expired
+const timeCount = () => {
+  if (!time) return 
 
-//Ищу текущее значение
-const timeCount = (newData) => {
-
-  let dates = new Date(newData);
+  let developerTime = new Date(time);
   let now = new Date();
-  let isNewDate = time ? new Date(time) : null;
-  let trueDay = isNewDate || newDeveloper;
-  //Осталось до
-  let leftUntil = trueDay - now;
 
-  //Получаю значение в миллисекундах
+  let leftUntil = developerTime - now;
+
   let days = Math.floor(leftUntil / 1000 / 60 / 60 / 24);
   let hours = Math.floor(leftUntil / 1000 / 60 / 60) % 24;
   let minutes = Math.floor(leftUntil / 1000 / 60) % 60;
@@ -68,20 +61,17 @@ const timeCount = (newData) => {
   minutesVal.textContent = minutes;
   secondsVal.textContent = seconds;
 
-  daysText.textContent = declOfNum2(days, daysWords);
-  hoursText.textContent = declOfNum2(hours, hoursWords);
-  minutesText.textContent = declOfNum2(minutes, minutesWords);
-  secondsText.textContent = declOfNum2(seconds, secondWords);
+  daysText.textContent = declOfNum(days, daysWords);
+  hoursText.textContent = declOfNum(hours, hoursWords);
+  minutesText.textContent = declOfNum(minutes, minutesWords);
+  secondsText.textContent = declOfNum(seconds, secondWords);
 
   if (leftUntil < 0) {
-    clearInterval(countdown);
+    console.log('My times');
+    clearInterval(interval);
     countdownElement.innerHTML = '<h2 class="expired">Время вышло</h2>';
   }
 };
-//Вызов функции
-timeCount('Jan 24 2024');
-
-let countdown = setInterval(timeCount, 1000);
 
 const formEl = document.getElementById('my-form');
 formEl.addEventListener('submit', (event) => {
@@ -89,9 +79,11 @@ formEl.addEventListener('submit', (event) => {
 
   const myNumberInput = formEl.elements['my-input'];
   time = myNumberInput.value.replace('-', '.');
-}); 
-
-
+  // todo: reset old interval after user submits new interval
+  // ...
+  interval = setInterval(timeCount, 1000);
+  
+});
 
 const toggleThemeBtn = document.getElementById('toggle-theme-btn');
 const toggleThemeImage = document.getElementById('toggle-theme-image');
@@ -105,3 +97,4 @@ toggleThemeBtn.addEventListener('click', () => {
     toggleThemeImage.src = 'img/sun.png'
   }
 });
+
